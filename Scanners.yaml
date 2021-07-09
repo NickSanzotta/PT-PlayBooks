@@ -1,0 +1,45 @@
+session_name: Scanners
+windows:
+
+- window_name: Portscans
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME}/scanman"
+  panes:
+    - shell_command:
+        - "clear"
+      focus: true
+
+- window_name: EyeWitness
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME}/"
+  panes:
+    - shell_command:
+        - "cd EyeWitness/"
+        - "clear"
+      focus: true
+
+- window_name: MSFConsole
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME}/"
+  panes:
+    - shell_command:
+        - "msfconsole -q -n"
+        - "clear"
+      focus: true
+
+- window_name: DomainControllers
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME}/"
+  panes:
+    - shell_command:
+        - "cd zeroscan/"
+        - "clear"
+      focus: true
+    - shell_command:
+        - "clear"
+        - "#enum4linux -a"
+

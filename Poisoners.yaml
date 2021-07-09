@@ -1,0 +1,72 @@
+session_name: Poisoners
+windows:
+
+- window_name: TShark
+  layout: main-horizontal
+  shell_command_before:
+     - "cd ${TOOLS_HOME}/"
+  panes:
+    - shell_command:
+        - "clear"
+        - "tshark -Y nbns"
+      focus: true
+    - shell_command:
+        - "clear"
+        - "tshark -Y llmnr"
+    - shell_command:
+        - "clear" 
+        - "tshark -Y dhcpv6"
+
+- window_name: Responder+NTLMRelayX
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME}/"
+  panes:
+    - shell_command:
+        - "cd Responder"
+        - "clear"
+        - "#Responder -I eth0 -w"
+      focus: true
+    - shell_command:
+        - "clear"
+        - "python respondercmd.py off"
+    - shell_command: 
+        - "cd impacket/"
+        - "virtualenv -p /usr/bin/python3.9 venv"
+        - "source venv/bin/activate"
+        - cd "examples"
+        - "clear"
+        - "#python3 ntlmrelayx.py -smb2support -of responder"
+
+- window_name: MitM6+NTLMRelayX
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME}/"
+  panes:
+    - shell_command:
+        - "clear"
+        - "#mitm6 -d" 
+      focus: true
+    - shell_command:
+        - "cd impacket/"
+        - "virtualenv -p /usr/bin/python3.9 venv"
+        - "source venv/bin/activate"
+        - cd "examples"
+        - "clear"
+        - "#python3 ntlmrelayx.py -smb2support -of mitm6"
+
+- window_name: Ettercap
+  layout: main-horizontal
+  shell_command_before:
+    - "cd ${TOOLS_HOME/}"
+  panes:
+    - shell_command:
+        - "clear"
+      focus: true
+    - shell_command:
+        - "cd impacket/"
+        - "virtualenv -p /usr/bin/python3.9 venv"
+        - "source venv/bin/activate"
+        - cd "examples"
+        - "clear"
+        - "#python3 ntlmrelayx.py --smb-port 4445 -smb2support -of arp"
