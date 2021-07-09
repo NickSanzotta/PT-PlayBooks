@@ -1,2 +1,2 @@
-# PTPlayBooks
-PTPlayBooks is a collection of Tmuxp configuration files.
+# PT-PlayBooks
+PT-PlayBooks is a collection of Tmuxp configuration files.
